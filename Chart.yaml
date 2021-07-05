@@ -1,0 +1,11 @@
+apiVersion: v2
+name: YataiService
+description: A Helm chart to deploy YataiService to K8s
+type: application
+version: 0.2.0
+appVersion: 0.13.0
+dependencies:
+  - name: ingress-nginx
+    version: ~3.34.0
+    repository: https://kubernetes.github.io/ingress-nginx
+    condition: ingress.enabled
