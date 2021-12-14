@@ -1,11 +1,20 @@
 apiVersion: v2
-name: YataiService
-description: A Helm chart to deploy YataiService to K8s
-type: application
-version: 0.2.0
-appVersion: 0.13.0
+name: yatai
+description: Yatai Helm chart
 dependencies:
-  - name: ingress-nginx
-    version: ~3.34.0
-    repository: https://kubernetes.github.io/ingress-nginx
-    condition: ingress.enabled
+  - condition: postgresql.enabled
+    name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 10.X.X
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 1.x.x
+version: 0.1.0
+appVersion: 0.1.0
+home: https://github.com/bentoml/yatai
+type: application
+maintainers:
+  - name: BentoML developers
+    email: contact@bentoml.ai
