@@ -5,7 +5,7 @@ entries:
       category: Infrastructure
     apiVersion: v2
     appVersion: 1.10.0
-    created: "2021-12-14T13:00:54.764765-08:00"
+    created: "2021-12-14T13:16:12.987-08:00"
     description: A Library Helm Chart for grouping common logic between bitnami charts.
       This chart is not deployable by itself.
     digest: 5c5c415745755c80f39b5fc5fc54a846d81ef72fdd27662e0fa6061e3d342f7e
@@ -33,7 +33,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.14.0
-    created: "2021-12-14T13:00:54.77156-08:00"
+    created: "2021-12-14T13:16:12.991445-08:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -62,4 +62,29 @@ entries:
     urls:
     - charts/postgresql-10.13.11.tgz
     version: 10.13.11
-generated: "2021-12-14T13:00:54.763728-08:00"
+  yatai:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2021-12-14T13:16:12.984895-08:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.X.X
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Yatai Helm chart
+    digest: b62768054178c9ea0b309b0bbec14c7c29a36a3f64423bc61f6ccf875c716bdc
+    home: https://github.com/bentoml/yatai
+    maintainers:
+    - email: contact@bentoml.ai
+      name: BentoML developers
+    name: yatai
+    type: application
+    urls:
+    - yatai-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-12-14T13:16:12.973383-08:00"
