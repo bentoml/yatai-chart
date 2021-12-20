@@ -11,6 +11,11 @@ Helm Chart for installing YataiService on Kubernetes
 Make sure you have a local k8s cluster running before developing the chart. One can use [`minikube`](https://minikube.sigs.k8s.io/docs/)
 
 
+#### Start minikube
+```bash
+minikube start --memory=8192 --cpus=8
+```
+
 #### Install Helm repo
 ```bash
 helm repo add yatai https://bentoml.github.io/yatai-chart
@@ -24,11 +29,11 @@ helm repo update
 #### Install Helm chart to Kubernetes cluster
 
 ```bash
-helm install yatai/yatai-chart -n yatai-system --create-namespace
+helm install yatai yatai/yatai -n yatai-system --create-namespace
 ```
 
 #### Uninstall Yatai
 
 ```bash
-helm uninstall yatai
+./delete-yatai.sh
 ```
