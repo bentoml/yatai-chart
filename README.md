@@ -17,6 +17,15 @@ This is the top level Yatai chart, which configures all the necessary components
 * Use external object storage services like AWS S3 or use the default Minio.
 * Use external Docker registry or use the default Docker registry.
 
+
+## TL;DR:
+
+```bash
+helm repo add yatai https://bentoml.github.io/yatai-chart
+helm repo update
+helm install yatai yatai/yatai -n yatai-system --create-namespace
+```
+
 ## Helm chart deployment overview
 
 This chart will create the following resources on Kubernetes:
