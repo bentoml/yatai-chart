@@ -55,5 +55,4 @@ git commit -m "Update Yatai image to $YATAI_IMAGE"
 git push origin artifacthub-io-release
 
 echo "Done!"
-echo "You can now push the changes to the `artifacthub-io-release` branch"
 
