@@ -48,10 +48,10 @@ TAR_FILE=$(find . -name "*.tgz")
 git add "$TAR_FILE"
 
 # commit the changes
-# git commit -m "Update Yatai image to $YATAI_IMAGE"
+git commit -m "Update Yatai image to $YATAI_IMAGE"
 
 # push the changes
-# git push origin artifacthub-io-release
+git push origin artifacthub-io-release
 
 echo "Done!"
 
