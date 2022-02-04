@@ -6,15 +6,6 @@ Helm Chart for installing YataiService on Kubernetes
 - *Kubernetes 1.18+*
 - *Helm 3+*
 
-## Installation
-
-Make sure you have a local k8s cluster running before developing the chart. One can use [`minikube`](https://minikube.sigs.k8s.io/docs/)
-
-
-#### Start minikube
-```bash
-minikube start --memory=8192 --cpus=8
-```
 
 #### Install Helm repo
 ```bash
@@ -35,19 +26,7 @@ helm install yatai yatai/yatai -n yatai-system --create-namespace
 #### Uninstall Yatai
 
 ```bash
+wget https://https://bentoml.github.io/yatai-chart/delete-yatai.sh
+chmod +x delete-yatai.sh
 ./delete-yatai.sh
 ```
-
-
-## How to update artifacthub listing
-
-1. Update the version in `Chart.yaml`
-
-
-2. Run generate index.yaml and .tgz file command
-```bash
-make generate
-```
-
-3. Make PR to the repo.  Aritfact hub will check repo change every 15 mins
-
