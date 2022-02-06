@@ -1,71 +1,33 @@
 apiVersion: v1
 entries:
-  common:
-  - annotations:
-      category: Infrastructure
-    apiVersion: v2
-    appVersion: 1.10.0
-    created: "2022-01-28T17:22:42.618919+08:00"
-    description: A Library Helm Chart for grouping common logic between bitnami charts.
-      This chart is not deployable by itself.
-    digest: 5c5c415745755c80f39b5fc5fc54a846d81ef72fdd27662e0fa6061e3d342f7e
-    home: https://github.com/bitnami/charts/tree/master/bitnami/common
-    icon: https://bitnami.com/downloads/logos/bitnami-mark.png
-    keywords:
-    - common
-    - helper
-    - template
-    - function
-    - bitnami
-    maintainers:
-    - email: containers@bitnami.com
-      name: Bitnami
-    name: common
-    sources:
-    - https://github.com/bitnami/charts
-    - https://www.bitnami.com/
-    type: library
-    urls:
-    - charts/common-1.10.3.tgz
-    version: 1.10.3
-  postgresql:
-  - annotations:
-      category: Database
-    apiVersion: v2
-    appVersion: 11.14.0
-    created: "2022-01-28T17:22:42.622145+08:00"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami
-      version: 1.x.x
-    description: Chart for PostgreSQL, an object-relational database management system
-      (ORDBMS) with an emphasis on extensibility and on standards-compliance.
-    digest: e82781f3bc1895ba05c9873ce362e442485f5ad1c96eddaf24a9d7b10f0121b4
-    home: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
-    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
-    keywords:
-    - postgresql
-    - postgres
-    - database
-    - sql
-    - replication
-    - cluster
-    maintainers:
-    - email: containers@bitnami.com
-      name: Bitnami
-    - email: cedric@desaintmartin.fr
-      name: desaintmartin
-    name: postgresql
-    sources:
-    - https://github.com/bitnami/bitnami-docker-postgresql
-    - https://www.postgresql.org/
-    urls:
-    - charts/postgresql-10.13.11.tgz
-    version: 10.13.11
   yatai:
   - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2022-02-06T14:38:25.04733-08:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.X.X
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Yatai Helm chart
+    digest: 5bcc1b6824b4136830087f73d86763ba712cb175807c41bdf8f97666bf1f6f49
+    home: https://github.com/bentoml/yatai
+    maintainers:
+    - email: contact@bentoml.ai
+      name: BentoML developers
+    name: yatai
+    type: application
+    urls:
+    - yatai-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 0.1.1
-    created: "2022-01-28T17:22:42.618168+08:00"
+    created: "2022-02-06T14:38:25.043569-08:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -89,7 +51,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-01-28T17:22:42.604445+08:00"
+    created: "2022-02-06T14:38:25.037005-08:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -111,4 +73,4 @@ entries:
     urls:
     - yatai-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-28T17:22:42.596697+08:00"
+generated: "2022-02-06T14:38:25.032262-08:00"
