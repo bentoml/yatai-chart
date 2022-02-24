@@ -72,7 +72,7 @@ git checkout artifacthub-io-release
 git stash pop
 
 echo "Re-index helm charts..."
-helm repo-index .
+helm repo index .
 
 # commit the changes
 echo "Committing the changes..."
