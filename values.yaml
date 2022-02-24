@@ -46,6 +46,11 @@ externalPostgresql:
   password: ''
   database: yatai
 
+adminUser:
+  email: ''
+  name: 'admin'
+  password: 'admin'
+
 config:
   # you can put your config.yaml here
 

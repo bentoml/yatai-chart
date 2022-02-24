@@ -127,3 +127,10 @@ Add environment variables to configure database values
     {{- end -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Generate inititalization token
+*/}}
+{{ - define "yatai.initializationToken" -}}
+{{- randAlphaNum 16 -}}
+{{- end -}}
