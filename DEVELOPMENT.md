@@ -9,14 +9,13 @@ for both `version` and `appVersion`.
 
 How to release new version of Yatai chart:
 
-1. In Yatai repo, makes a new release on Github. The same semantic version is also used for the docker image tag.
+1. In Yatai repo, makes a new tag on Github. The same semantic version is also used for the docker image tag.
 2. In this repo, run `release.sh` script with the semantic versioni from previous step as the argument.
 
-Since, Yatai does not make github release and tag the docker image with the semantic version yet, we will have to manually increase the semantic version in the chart.yaml file.
 
 Run `release.sh` script with docker image tag as the first argument and semantic version as the second argument.
 
 ```bash
-./release.sh docker_tag_for_yatai semantic_version_for_the_chart
+./release.sh yatai_github_repo_tag
 ```
 
