@@ -56,6 +56,16 @@ spec:
                   key: {{ include "yatai.postgresql.existingsecret.key" . }}
             - name: PG_USER
               value: {{ ternary .Values.postgresql.postgresqlUsername .Values.externalPostgresql.user .Values.postgresql.enabled | quote }}
+            - name: SESSION_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "yatai.fullname" . }}
+                  key: session_secret_key
+            - name: YATAI_INITIALIZATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "yatai.fullname" . }}
+                  key: initialization_token
           livenessProbe:
             failureThreshold: 10
             initialDelaySeconds: 30
