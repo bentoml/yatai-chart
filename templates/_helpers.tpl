@@ -63,9 +63,10 @@ Create the name of the service account to use
 {{- end }}
 
 {{- define "yatai.sessionSecretKey" -}}
-{{- randAlphaNum 16 -}}
+    {{- $secretObj := (lookup "v1" "Secret" .Release.Namespace (include "yatai.fullname" .)) | default dict }}
+    {{- $secretData := (get $secretObj "data") | default dict }}
+    {{- (get $secretData "session_secret_key") | default (randAlphaNum 16 | nospace | b64enc) | b64dec }}
 {{- end -}}
-
 
 {{/*
 Create a default fully qualified postgresql name.
@@ -132,5 +133,7 @@ Add environment variables to configure database values
 Generate inititalization token
 */}}
 {{- define "yatai.initializationToken" -}}
-{{- randAlphaNum 16 -}}
+    {{- $secretObj := (lookup "v1" "Secret" .Release.Namespace (include "yatai.fullname" .)) | default dict }}
+    {{- $secretData := (get $secretObj "data") | default dict }}
+    {{- (get $secretData "initialization_token") | default (randAlphaNum 16 | nospace | b64enc) | b64dec }}
 {{- end -}}
