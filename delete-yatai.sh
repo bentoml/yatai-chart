@@ -2,7 +2,7 @@
 
 echo -e "\033[01;31mWarning: this will permanently delete all Yatai resources, existing model deployments, and in-cluster minio, postgresql DB data. Note that external DB and blob storage will not be deleted.\033[00m"
 read -p "Are you sure to delete Yatai in cluster '$(kubectl config current-context)'? [y/n] " -n 1 -r
-echo    # (optional) move to a new line
+echo # move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
