@@ -11,10 +11,15 @@ fi
 echo "Uninstalling yatai helm chart from cluster.."
 helm uninstall yatai -n yatai-system
 
+echo "Deleting all crd resources and BentoDeployment.."
+kubectl delete crd bentodeployments.serving.yatai.ai
+kubectl delete crd deployments.component.yatai.ai
+
 echo "Removing additional yatai related namespaces and resources.."
 kubectl delete namespace yatai-components
 kubectl delete namespace yatai-operators
 kubectl delete namespace yatai-builders
 kubectl delete namespace yatai
+kubectl delete namespace yatai-system
 
 echo "Done"
