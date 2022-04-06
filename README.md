@@ -26,5 +26,6 @@ helm install yatai yatai/yatai -n yatai-system --create-namespace
 #### Uninstall Yatai
 
 ```bash
-curl https://bentoml.github.io/yatai-chart/delete-yatai.sh | bash
+curl -O https://raw.githubusercontent.com/bentoml/yatai-chart/main/delete-yatai.sh
+bash delete-yatai.sh
 ```
