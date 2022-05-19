@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -xe
 
 
 REMOTE=${REMOTE:-origin}
@@ -21,7 +21,7 @@ git checkout main
 
 echo "Updating the value.yaml file with the new Yatai image..."
 echo "Updating appVersion and version in Chart.yaml"
-if [[ "$OSTYPE" =~ ^darwin ]]; then
+if [[ "$OSTYPE" =~ ^darwin && !bash -c "sed --version | grep -q gsed" ]]; then
     # Note
     # for Mac users who get an invalid command code C error... For in-place
     # replacements, BSD sed requires a file extension after the -i flag because it
