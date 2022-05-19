@@ -2,17 +2,13 @@
 set -e
 
 
-REMOTE="origin"
+REMOTE=${REMOTE:-origin}
 if [ "$#" -eq 1 ]; then
     YATAI_IMAGE=$1
     VERSION=$1
 elif [ "$#" -eq 2 ]; then
     YATAI_IMAGE=$1
     VERSION=$2
-elif [ "$#" -eq 3 ]; then
-    YATAI_IMAGE=$1
-    VERSION=$2
-    REMOTE=$3
 else
     echo "Usage: $0 [YATAI_IMAGE] [VERSION]"
     exit 1
