@@ -21,7 +21,7 @@ git checkout main
 
 echo "Updating the value.yaml file with the new Yatai image..."
 echo "Updating appVersion and version in Chart.yaml"
-if [[ "$OSTYPE" =~ ^darwin && !bash -c "sed --version | grep -q gsed" ]]; then
+if [[ "$OSTYPE" =~ ^darwin ]] && ! sed --version | grep -q GNU; then
     # Note
     # for Mac users who get an invalid command code C error... For in-place
     # replacements, BSD sed requires a file extension after the -i flag because it
