@@ -43,8 +43,29 @@ externalPostgresql:
   host: localhost
   port: 5432
   user: yatai
-  password: ''
   database: yatai
+  existingSecret: ''
+  existingSecretPasswordKey: ''
+
+externalS3:
+  enabled: false
+  endpoint: ''
+  region: ''
+  bucketName: ''
+  secure: true
+  existingSecret: ''
+  existingSecretAccessKeyKey: 'access_key'
+  existingSecretSecretKeyKey: 'secret_key'
+
+externalDockerRegistry:
+  enabled: false
+  server: ''
+  username: ''
+  secure: true
+  bentoRepositoryName: 'yatai-bentos'
+  modelRepositoryName: 'yatai-models'
+  existingSecret: ''
+  existingSecretPasswordKey: ''
 
 config:
   # you can put your config.yaml here

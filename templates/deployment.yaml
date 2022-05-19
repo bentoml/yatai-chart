@@ -66,6 +66,43 @@ spec:
                 secretKeyRef:
                   name: {{ include "yatai.fullname" . }}
                   key: initialization_token
+            {{- if .Values.externalS3.enabled }}
+            - name: S3_ENDPOINT
+              value: {{ .Values.externalS3.endpoint }}
+            - name: S3_REGION
+              value: {{ .Values.externalS3.region }}
+            - name: S3_BUCKET_NAME
+              value: {{ .Values.externalS3.bucketName }}
+            - name: S3_SECURE
+              value: {{ .Values.externalS3.secure }}
+            - name: S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.externalS3.existingSecret }}
+                  key: {{ .Values.externalS3.existingSecretAccessKeyKey }}
+            - name: S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.externalS3.existingSecret }}
+                  key: {{ .Values.externalS3.existingSecretSecretKeyKey }}
+            {{- end }}
+            {{- if .Values.externalDockerRegistry.enabled }}
+            - name: DOCKER_REGISTRY_SERVER
+              value: {{ .Values.externalDockerRegistry.server }}
+            - name: DOCKER_REGISTRY_USERNAME
+              value: {{ .Values.externalDockerRegistry.username }}
+            - name: DOCKER_REGISTRY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.externalDockerRegistry.existingSecret }}
+                  key: {{ .Values.externalDockerRegistry.existingSecretAccessKeyKey }}
+            - name: DOCKER_REGISTRY_SECURE
+              value: {{ .Values.externalDockerRegistry.secure }}
+            - name: DOCKER_REGISTRY_BENTO_REPOSITORY_NAME
+              value: {{ .Values.externalDockerRegistry.bentoRepositoryName }}
+            - name: DOCKER_REGISTRY_MODEL_REPOSITORY_NAME
+              value: {{ .Values.externalDockerRegistry.modelRepositoryName }}
+            {{- end }}
           livenessProbe:
             failureThreshold: 10
             initialDelaySeconds: 30
