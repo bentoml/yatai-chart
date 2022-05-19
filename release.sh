@@ -69,7 +69,7 @@ git stash --include-untracked
 # Checkout the `artifacthub-io-release` branch
 echo "Checking out the artifacthub-io-release branch..."
 git checkout artifacthub-io-release
-git fetch ${REMOTE} artifacthub-io-release:artifacthub-io-release -r
+git pull ${REMOTE} artifacthub-io-release:artifacthub-io-release -r
 
 git stash pop
 
