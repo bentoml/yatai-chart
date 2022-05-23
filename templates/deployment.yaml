@@ -74,7 +74,7 @@ spec:
             - name: S3_BUCKET_NAME
               value: {{ .Values.externalS3.bucketName }}
             - name: S3_SECURE
-              value: {{ .Values.externalS3.secure }}
+              value: {{ .Values.externalS3.secure | toString }}
             - name: S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
@@ -97,7 +97,7 @@ spec:
                   name: {{ .Values.externalDockerRegistry.existingSecret }}
                   key: {{ .Values.externalDockerRegistry.existingSecretAccessKeyKey }}
             - name: DOCKER_REGISTRY_SECURE
-              value: {{ .Values.externalDockerRegistry.secure }}
+              value: {{ .Values.externalDockerRegistry.secure | toString }}
             - name: DOCKER_REGISTRY_BENTO_REPOSITORY_NAME
               value: {{ .Values.externalDockerRegistry.bentoRepositoryName }}
             - name: DOCKER_REGISTRY_MODEL_REPOSITORY_NAME
