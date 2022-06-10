@@ -67,6 +67,9 @@ externalDockerRegistry:
   existingSecret: ''
   existingSecretPasswordKey: ''
 
+dockerImageBuilder:
+  privileged: false
+
 config:
   # you can put your config.yaml here
 

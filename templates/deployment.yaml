@@ -103,6 +103,8 @@ spec:
             - name: DOCKER_REGISTRY_MODEL_REPOSITORY_NAME
               value: {{ .Values.externalDockerRegistry.modelRepositoryName | quote }}
             {{- end }}
+            - name: DOCKER_IMAGE_BUILDER_PRIVILEGED
+              value: {{ .Values.dockerImageBuilder.privileged | quote }}
           livenessProbe:
             failureThreshold: 10
             initialDelaySeconds: 30
