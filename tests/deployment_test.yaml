@@ -72,7 +72,7 @@ tests:
           value: RELEASE-NAME-postgresql
       - equal:
           path: spec.template.spec.containers[0].env[4].valueFrom.secretKeyRef.key
-          value: postgresql-password
+          value: PG_PASSWORD
   - it: external postgres
     set: 
       postgresql.enabled: false

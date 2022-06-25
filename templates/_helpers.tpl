@@ -115,16 +115,16 @@ Add environment variables to configure database values
 */}}
 {{- define "yatai.postgresql.existingsecret.key" -}}
 {{- if .Values.postgresql.enabled -}}
-    {{- printf "%s" "postgresql-password" -}}
+    {{- printf "%s" "PG_PASSWORD" -}}
 {{- else -}}
     {{- if .Values.externalPostgresql.existingSecret -}}
         {{- if .Values.externalPostgresql.existingSecretPasswordKey -}}
             {{- printf "%s" .Values.externalPostgresql.existingSecretPasswordKey -}}
         {{- else -}}
-            {{- printf "%s" "postgresql-password" -}}
+            {{- printf "%s" "PG_PASSWORD" -}}
         {{- end -}}
     {{- else -}}
-        {{- printf "%s" "postgresql-password" -}}
+        {{- printf "%s" "PG_PASSWORD" -}}
     {{- end -}}
 {{- end -}}
 {{- end -}}
