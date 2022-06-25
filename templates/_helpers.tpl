@@ -115,16 +115,16 @@ Add environment variables to configure database values
 */}}
 {{- define "yatai.postgresql.existingsecret.key" -}}
 {{- if .Values.postgresql.enabled -}}
-    {{- printf "%s" "postgresql-password" -}}
+    {{- printf "%s" "PG_PASSWORD" -}}
 {{- else -}}
     {{- if .Values.externalPostgresql.existingSecret -}}
         {{- if .Values.externalPostgresql.existingSecretPasswordKey -}}
             {{- printf "%s" .Values.externalPostgresql.existingSecretPasswordKey -}}
         {{- else -}}
-            {{- printf "%s" "postgresql-password" -}}
+            {{- printf "%s" "PG_PASSWORD" -}}
         {{- end -}}
     {{- else -}}
-        {{- printf "%s" "postgresql-password" -}}
+        {{- printf "%s" "PG_PASSWORD" -}}
     {{- end -}}
 {{- end -}}
 {{- end -}}
@@ -136,4 +136,18 @@ Generate inititalization token
     {{- $secretObj := (lookup "v1" "Secret" .Release.Namespace (include "yatai.fullname" .)) | default dict }}
     {{- $secretData := (get $secretObj "data") | default dict }}
     {{- (get $secretData "initialization_token") | default (randAlphaNum 16 | nospace | b64enc) | b64dec }}
+{{- end -}}
+
+
+{{/*
+Renders a value that contains template.
+Usage:
+{{ include "yatai.render" ( dict "value" .Values.path.to.the.Value "context" $) }}
+*/}}
+{{- define "yatai.render" -}}
+    {{- if typeIs "string" .value }}
+        {{- tpl .value .context }}
+    {{- else }}
+        {{- tpl (.value | toYaml) .context }}
+    {{- end }}
 {{- end -}}
