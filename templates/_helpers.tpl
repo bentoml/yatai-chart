@@ -137,3 +137,17 @@ Generate inititalization token
     {{- $secretData := (get $secretObj "data") | default dict }}
     {{- (get $secretData "initialization_token") | default (randAlphaNum 16 | nospace | b64enc) | b64dec }}
 {{- end -}}
+
+
+{{/*
+Renders a value that contains template.
+Usage:
+{{ include "yatai.render" ( dict "value" .Values.path.to.the.Value "context" $) }}
+*/}}
+{{- define "yatai.render" -}}
+    {{- if typeIs "string" .value }}
+        {{- tpl .value .context }}
+    {{- else }}
+        {{- tpl (.value | toYaml) .context }}
+    {{- end }}
+{{- end -}}

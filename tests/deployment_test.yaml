@@ -1,0 +1,121 @@
+suite: test deployment
+templates:
+  - deployment.yaml
+tests:
+  - it: renders with defaults
+    asserts:
+      - hasDocuments:
+          count: 1
+      - equal:
+          path: spec.template.spec.containers[0].command[0]
+          value: sh
+      - equal:
+          path: spec.template.spec.containers[0].command[1]
+          value: -c
+      - equal:
+          path: spec.template.spec.containers[0].args[0]
+          value: exec /app/api-server serve -c /conf/config.yaml
+  - it: custom command and args
+    set: 
+      command:
+        - thing
+        - thing 2
+      args:
+        - testing arguments
+    asserts:
+      - hasDocuments:
+          count: 1
+      - equal:
+          path: spec.template.spec.containers[0].command[0]
+          value: thing
+      - equal:
+          path: spec.template.spec.containers[0].command[1]
+          value: thing 2
+      - equal:
+          path: spec.template.spec.containers[0].args[0]
+          value: testing arguments
+  - it: enable postgres
+    set: 
+      postgresql.enabled: true
+    asserts:
+      - hasDocuments:
+          count: 1
+      - equal:
+          path: spec.template.spec.containers[0].env[0].name
+          value: PG_HOST
+      - equal:
+          path: spec.template.spec.containers[0].env[0].value
+          value: RELEASE-NAME-postgresql
+      - equal:
+          path: spec.template.spec.containers[0].env[1].name
+          value: PG_DATABASE
+      - equal:
+          path: spec.template.spec.containers[0].env[1].value
+          value: yatai
+      - equal:
+          path: spec.template.spec.containers[0].env[2].name
+          value: PG_PORT
+      - equal:
+          path: spec.template.spec.containers[0].env[2].value
+          value: "5432"
+      - equal:
+          path: spec.template.spec.containers[0].env[3].name
+          value: PG_USER
+      - equal:
+          path: spec.template.spec.containers[0].env[3].value
+          value: postgres
+      - equal:
+          path: spec.template.spec.containers[0].env[4].name
+          value: PG_PASSWORD
+      - equal:
+          path: spec.template.spec.containers[0].env[4].valueFrom.secretKeyRef.name
+          value: RELEASE-NAME-postgresql
+      - equal:
+          path: spec.template.spec.containers[0].env[4].valueFrom.secretKeyRef.key
+          value: postgresql-password
+  - it: external postgres
+    set: 
+      postgresql.enabled: false
+      externalPostgresql:
+        host: test-host
+        database: test-db
+        port: 1234
+        user: test-user
+        existingSecret: test-secret
+        existingSecretPasswordKey: PG_PASSWORD
+    asserts:
+      - hasDocuments:
+          count: 1
+      - equal:
+          path: spec.template.spec.containers[0].env[0].name
+          value: PG_HOST
+      - equal:
+          path: spec.template.spec.containers[0].env[0].value
+          value: test-host
+      - equal:
+          path: spec.template.spec.containers[0].env[1].name
+          value: PG_DATABASE
+      - equal:
+          path: spec.template.spec.containers[0].env[1].value
+          value: test-db
+      - equal:
+          path: spec.template.spec.containers[0].env[2].name
+          value: PG_PORT
+      - equal:
+          path: spec.template.spec.containers[0].env[2].value
+          value: "1234"
+      - equal:
+          path: spec.template.spec.containers[0].env[3].name
+          value: PG_USER
+      - equal:
+          path: spec.template.spec.containers[0].env[3].value
+          value: test-user
+      - equal:
+          path: spec.template.spec.containers[0].env[4].name
+          value: PG_PASSWORD
+      - equal:
+          path: spec.template.spec.containers[0].env[4].valueFrom.secretKeyRef.name
+          value: test-secret
+      - equal:
+          path: spec.template.spec.containers[0].env[4].valueFrom.secretKeyRef.key
+          value: PG_PASSWORD

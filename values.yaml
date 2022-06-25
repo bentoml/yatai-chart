@@ -6,6 +6,12 @@ replicaCount: 1
 
 registry: quay.io/bentoml
 
+command:
+  - sh
+  - -c
+args:
+  - exec /app/api-server serve -c /conf/config.yaml
+
 image:
   repository: yatai
   pullPolicy: IfNotPresent
