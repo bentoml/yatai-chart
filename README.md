@@ -53,3 +53,12 @@ There are many ways to contribute to the project:
 - Report issues you're facing and "Thumbs up" on issues and feature requests that are relevant to you.
 - Investigate bugs and reviewing other developer's pull requests.
 - Contributing code or documentation to the project by submitting a Github pull request.
+
+
+# Testing
+
+## Unit Tests
+
+Uses: https://github.com/quintush/helm-unittest to unit test each yaml file
+
+run using: `helm unittest -3 .`

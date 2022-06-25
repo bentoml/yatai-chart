@@ -33,11 +33,12 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-            - sh
-            - -c
-          args:
-            - exec /app/api-server serve -c /conf/config.yaml
+          {{- if .Values.command }}
+          command: {{- include "yatai.render" (dict "value" .Values.command "context" $) | nindent 12 }}
+          {{- end }}
+          {{- if .Values.args }}
+          args: {{- include "yatai.render" (dict "value" .Values.args "context" $) | nindent 12 }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 7777
@@ -49,13 +50,13 @@ spec:
               value: {{ ternary .Values.postgresql.postgresqlDatabase .Values.externalPostgresql.database .Values.postgresql.enabled }}
             - name: PG_PORT
               value: {{ ternary "5432" .Values.externalPostgresql.port .Values.postgresql.enabled | quote}}
+            - name: PG_USER
+              value: {{ ternary .Values.postgresql.postgresqlUsername .Values.externalPostgresql.user .Values.postgresql.enabled | quote }}
             - name: PG_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ include "yatai.postgresql.secretName" . }}
                   key: {{ include "yatai.postgresql.existingsecret.key" . }}
-            - name: PG_USER
-              value: {{ ternary .Values.postgresql.postgresqlUsername .Values.externalPostgresql.user .Values.postgresql.enabled | quote }}
             - name: SESSION_SECRET_KEY
               valueFrom:
                 secretKeyRef:
