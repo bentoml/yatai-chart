@@ -46,9 +46,11 @@ spec:
             - name: PG_HOST
               value: {{ ternary (include "yatai.postgresql.host" .) .Values.externalPostgresql.host .Values.postgresql.enabled | quote }}
             - name: PG_DATABASE
-              value: {{ ternary .Values.postgresql.postgresqlDatabase .Values.externalPostgresql.database .Values.postgresql.enabled }}
+              value: {{ ternary .Values.postgresql.postgresqlDatabase .Values.externalPostgresql.database .Values.postgresql.enabled | quote }}
             - name: PG_PORT
               value: {{ ternary "5432" .Values.externalPostgresql.port .Values.postgresql.enabled | quote}}
+            - name: PG_SSLMODE
+              value: {{ ternary "disable" .Values.externalPostgresql.sslmode .Values.postgresql.enabled | quote}}
             - name: PG_PASSWORD
               valueFrom:
                 secretKeyRef:

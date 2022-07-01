@@ -44,6 +44,7 @@ externalPostgresql:
   port: 5432
   user: yatai
   database: yatai
+  sslmode: disable
   existingSecret: ''
   existingSecretPasswordKey: ''
 
