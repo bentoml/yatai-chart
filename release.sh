@@ -29,13 +29,13 @@ if [[ "$OSTYPE" =~ ^darwin ]] && ! sed --version | grep -q GNU; then
     # 's/find/replace/' /file.txt You can skip the backup by using an empty
     # string like so: sed -i '' 's/find/replace/' /file.txt –
 
-    sed -i '' "s/^  tag:.*$/  tag: $YATAI_IMAGE/" values.yaml
-    sed -i '' "s/^version:.*$/version: $VERSION/" Chart.yaml
-    sed -i '' "s/^appVersion:.*$/appVersion: $VERSION/" Chart.yaml
+    sed -i '' "s/^  tag:.*$/  tag: \"$YATAI_IMAGE\"/" values.yaml
+    sed -i '' "s/^version:.*$/version: \"$VERSION\"/" Chart.yaml
+    sed -i '' "s/^appVersion:.*$/appVersion: \"$VERSION\"/" Chart.yaml
 else
-    sed -i "s/^  tag:.*$/  tag: $YATAI_IMAGE/" values.yaml
-    sed -i "s/^version:.*$/version: $VERSION/" Chart.yaml
-    sed -i "s/^appVersion:.*$/appVersion: $VERSION/" Chart.yaml
+    sed -i "s/^  tag:.*$/  tag: \"$YATAI_IMAGE\"/" values.yaml
+    sed -i "s/^version:.*$/version: \"$VERSION\"/" Chart.yaml
+    sed -i "s/^appVersion:.*$/appVersion: \"$VERSION\"/" Chart.yaml
 fi
 
 # Add changed files to git
