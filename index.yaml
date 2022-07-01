@@ -2,8 +2,32 @@ apiVersion: v1
 entries:
   yatai:
   - apiVersion: v2
+    appVersion: 0.3.10
+    created: "2022-07-01T18:59:19.227635012Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.X.X
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    description: Yatai Helm chart
+    digest: 07fd834780baae711808232769bb5b40379c20a91e35801c90b40dace24ef4eb
+    home: https://github.com/bentoml/yatai
+    maintainers:
+    - email: contact@bentoml.ai
+      name: BentoML developers
+    name: yatai
+    type: application
+    urls:
+    - yatai-0.3.10.tgz
+    version: 0.3.10
+  - apiVersion: v2
     appVersion: 0.3.9
-    created: "2022-07-01T07:27:19.393969795Z"
+    created: "2022-07-01T18:59:19.305663991Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -27,7 +51,7 @@ entries:
     version: 0.3.9
   - apiVersion: v2
     appVersion: 0.3.8
-    created: "2022-07-01T07:27:19.381385374Z"
+    created: "2022-07-01T18:59:19.296641808Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -51,7 +75,7 @@ entries:
     version: 0.3.8
   - apiVersion: v2
     appVersion: 0.3.7
-    created: "2022-07-01T07:27:19.371866104Z"
+    created: "2022-07-01T18:59:19.285073054Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -75,7 +99,7 @@ entries:
     version: 0.3.7
   - apiVersion: v2
     appVersion: 0.3.6
-    created: "2022-07-01T07:27:19.357510002Z"
+    created: "2022-07-01T18:59:19.276373768Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -99,7 +123,7 @@ entries:
     version: 0.3.6
   - apiVersion: v2
     appVersion: 0.3.5
-    created: "2022-07-01T07:27:19.341401563Z"
+    created: "2022-07-01T18:59:19.265825498Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -123,7 +147,7 @@ entries:
     version: 0.3.5
   - apiVersion: v2
     appVersion: 0.3.4
-    created: "2022-07-01T07:27:19.33175539Z"
+    created: "2022-07-01T18:59:19.253585086Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -147,7 +171,7 @@ entries:
     version: 0.3.4
   - apiVersion: v2
     appVersion: 0.3.3
-    created: "2022-07-01T07:27:19.319454499Z"
+    created: "2022-07-01T18:59:19.245337679Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -171,7 +195,7 @@ entries:
     version: 0.3.3
   - apiVersion: v2
     appVersion: 0.3.2
-    created: "2022-07-01T07:27:19.310625914Z"
+    created: "2022-07-01T18:59:19.236909093Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -195,7 +219,7 @@ entries:
     version: 0.3.2
   - apiVersion: v2
     appVersion: 0.3.1
-    created: "2022-07-01T07:27:19.299439816Z"
+    created: "2022-07-01T18:59:19.216333908Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -219,7 +243,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 0.3.0
-    created: "2022-07-01T07:27:19.288032749Z"
+    created: "2022-07-01T18:59:19.20821882Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -243,7 +267,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 0.2.1
-    created: "2022-07-01T07:27:19.278693767Z"
+    created: "2022-07-01T18:59:19.197864452Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -267,7 +291,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2022-07-01T07:27:19.266005131Z"
+    created: "2022-07-01T18:59:19.189389361Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -291,7 +315,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.1.4
-    created: "2022-07-01T07:27:19.257598935Z"
+    created: "2022-07-01T18:59:19.176219079Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -315,7 +339,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 0.1.3
-    created: "2022-07-01T07:27:19.246290834Z"
+    created: "2022-07-01T18:59:19.165689656Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -339,7 +363,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.1.2
-    created: "2022-07-01T07:27:19.236786411Z"
+    created: "2022-07-01T18:59:19.153844099Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -363,7 +387,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.1
-    created: "2022-07-01T07:27:19.22242331Z"
+    created: "2022-07-01T18:59:19.144545744Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -387,7 +411,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-07-01T07:27:19.195010413Z"
+    created: "2022-07-01T18:59:19.114628347Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -409,4 +433,4 @@ entries:
     urls:
     - yatai-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-01T07:27:19.179997119Z"
+generated: "2022-07-01T18:59:19.097589693Z"
