@@ -97,7 +97,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.externalDockerRegistry.existingSecret | quote }}
-                  key: {{ .Values.externalDockerRegistry.existingSecretAccessKeyKey | quote }}
+                  key: {{ .Values.externalDockerRegistry.existingSecretPasswordKey | quote }}
             - name: DOCKER_REGISTRY_SECURE
               value: {{ .Values.externalDockerRegistry.secure | quote }}
             - name: DOCKER_REGISTRY_BENTO_REPOSITORY_NAME
