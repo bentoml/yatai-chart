@@ -137,3 +137,12 @@ Generate inititalization token
     {{- $secretData := (get $secretObj "data") | default dict }}
     {{- (get $secretData "initialization_token") | default (randAlphaNum 16 | nospace | b64enc) | b64dec }}
 {{- end -}}
+
+{{/*
+Generate k8s robot token
+*/}}
+{{- define "yatai.k8sRobotToken" -}}
+    {{- $secretObj := (lookup "v1" "Secret" .Release.Namespace (include "yatai.fullname" .)) | default dict }}
+    {{- $secretData := (get $secretObj "data") | default dict }}
+    {{- (get $secretData "k8s_robot_token") | default (randAlphaNum 16 | nospace | b64enc) | b64dec }}
+{{- end -}}
