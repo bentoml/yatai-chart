@@ -72,7 +72,25 @@ dockerImageBuilder:
   privileged: false
 
 config:
-  # you can put your config.yaml here
+  # You can put your config.yaml content here. This is the configuration of the Yatai api-server, example content you can find here: https://github.com/bentoml/Yatai/blob/main/yatai-config.sample.yaml
+
+layers:
+  network:
+    ingressClass: ''
+
+    # To configure DNS for Yatai, take an External IP or CNAME from setting up networking, and configure it with your DNS provider as follows:
+    #   If the networking layer produced an External IP address, then configure a wildcard `A` record for the domain:
+    #       ```
+    #       # Here yatai.example.com is the domain suffix for your cluster
+    #       *.yatai.example.com == A 10.0.0.1
+    #       ```
+    #   If the networking layer produced a `CNAME`, then configure a CNAME record for the domain:
+    #       ```
+    #       # Here yatai.example.com is the domain suffix for your cluster
+    #       *.yatai.example.com == CNAME a317a278525d111e89f272a164fd35fb-1510370581.eu-central-1.elb.amazonaws.com
+    #       ```
+    #   Then set `yatai.example.com` as domainSuffix field here. If you don't set it, Yatai will automatically generate a domain suffix for your bento deployment.
+    domainSuffix: ''
 
 securityContext: {}
   # capabilities:
@@ -83,15 +101,14 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
-  nodePort: 30080
 
 ingress:
-  className: yatai-ingress
-  enabled: true
+  className: ''
+  enabled: false
   hosts:
-    - host: yatai.127.0.0.1.sslip.io
+    - host: yatai.example.com
       paths:
       - /
   tls: []

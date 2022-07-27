@@ -17,8 +17,6 @@ When installing Yatai for the first time, run the following command to get an in
   
 * NOTE: It may take a few minutes for the LoadBalancer IP to be available. You can watch the status of by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "yatai.fullname" . }}'
 {{- else if contains "ClusterIP" .Values.service.type }}
-  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "yatai.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
-  echo "Create admin account at: http://127.0.0.1:8080/setup?token=$YATAI_INITIALIZATION_TOKEN" && kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:80
+  echo "Create admin account at: http://127.0.0.1:8080/setup?token=$YATAI_INITIALIZATION_TOKEN" && kubectl --namespace {{ .Release.Namespace }} port-forward svc/{{ include "yatai.fullname" . }} 8080:{{ .Values.service.port }}
 {{- end }}
 
-* NOTE: When using minikube, running `sudo minikube tunnel` is required for accessing the Yatai Web UI.
