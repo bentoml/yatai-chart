@@ -10,7 +10,7 @@ image:
   repository: yatai
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.3.14"
+  tag: "0.4.0"
 
 imagePullSecrets: []
 nameOverride: ""
