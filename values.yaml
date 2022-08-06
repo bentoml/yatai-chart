@@ -10,7 +10,7 @@ image:
   repository: yatai
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.4.6"
+  tag: "1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -30,68 +30,8 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-postgresql:
-  enabled: true
-  nameOverride: ""
-  postgresqlUsername: postgres
-  postgresqlDatabase: yatai
-  ## In case of postgresql.enabled = true, allow the usage of existing secrets for postgresql
-  ##
-  existingSecret: ""
-
-externalPostgresql:
-  host: localhost
-  port: 5432
-  user: yatai
-  database: yatai
-  sslmode: disable
-  existingSecret: ''
-  existingSecretPasswordKey: ''
-
-externalS3:
-  enabled: false
-  endpoint: ''
-  region: ''
-  bucketName: ''
-  secure: true
-  existingSecret: ''
-  existingSecretAccessKeyKey: 'access_key'
-  existingSecretSecretKeyKey: 'secret_key'
-
-externalDockerRegistry:
-  enabled: false
-  server: ''
-  username: ''
-  secure: true
-  bentoRepositoryName: 'yatai-bentos'
-  modelRepositoryName: 'yatai-models'
-  existingSecret: ''
-  existingSecretPasswordKey: ''
-
-dockerImageBuilder:
-  privileged: false
-
-config:
+configFileContent:
   # You can put your config.yaml content here. This is the configuration of the Yatai api-server, example content you can find here: https://github.com/bentoml/Yatai/blob/main/yatai-config.sample.yaml
-
-layers:
-  network:
-    ingressClass: ''
-    ingressAnnotations: {}
-
-    # To configure DNS for Yatai, take an External IP or CNAME from setting up networking, and configure it with your DNS provider as follows:
-    #   If the networking layer produced an External IP address, then configure a wildcard `A` record for the domain:
-    #       ```
-    #       # Here yatai.example.com is the domain suffix for your cluster
-    #       *.yatai.example.com == A 10.0.0.1
-    #       ```
-    #   If the networking layer produced a `CNAME`, then configure a CNAME record for the domain:
-    #       ```
-    #       # Here yatai.example.com is the domain suffix for your cluster
-    #       *.yatai.example.com == CNAME a317a278525d111e89f272a164fd35fb-1510370581.eu-central-1.elb.amazonaws.com
-    #       ```
-    #   Then set `yatai.example.com` as domainSuffix field here. If you don't set it, Yatai will automatically generate a domain suffix for your bento deployment.
-    domainSuffix: ''
 
 securityContext: {}
   # capabilities:
@@ -141,3 +81,26 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+postgresql:
+  host: localhost
+  port: 5432
+  user: yatai
+  database: yatai
+  sslmode: disable
+  password: ''
+  passwordExistingSecretName: ''
+  passwordExistingSecretKey: ''
+
+s3:
+  endpoint: ''
+  region: ''
+  bucketName: ''
+  secure: true
+  accessKey: ''
+  secretKey: ''
+  accessKeyExistingSecretName: ''
+  aceessKeyExistingSecretKey: 'access_key'
+  secretKeyExistingSecretName: ''
+  secretKeyExistingSecretKey: 'secret_key'
+
