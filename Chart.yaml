@@ -11,8 +11,8 @@ dependencies:
     tags:
       - bitnami-common
     version: 1.x.x
-version: "0.4.2"
-appVersion: "0.4.2"
+version: "0.4.3"
+appVersion: "0.4.3"
 home: https://github.com/bentoml/yatai
 type: application
 maintainers:
