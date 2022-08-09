@@ -9,7 +9,7 @@ data:
   ingress-class: {{ .Values.layers.network.ingressClass }}
   {{- end }}
   {{- if .Values.layers.network.ingressAnnotations }}
-  ingress-annotations: {{ .Values.layers.network.ingressAnnotations }}
+  ingress-annotations: {{ mustToJson .Values.layers.network.ingressAnnotations | quote }}
   {{- end }}
   {{- if .Values.layers.network.domainSuffix }}
   domain-suffix: {{ .Values.layers.network.domainSuffix }}
