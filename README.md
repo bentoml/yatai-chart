@@ -1,5 +1,7 @@
 # Yatai Helm Chart
 
+⚠️ The yatai-chart repository has been deprecated. Please see [bentoml/helm-charts](https://github.com/bentoml/helm-charts) for the latest Yatai Helm Charts configuration and packages.
+
 The Yatai Helm Chart is the official way to operate Yatai on Kubernetes. It contains all the required components to get started, and can configure with external services base on needs.
 
 See the [Yatai administrator's guide](https://github.com/bentoml/Yatai/blob/main/docs/admin-guide.md) for how to install Yatai and other information on charts, and advanced configuration.
